@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :stores
+  resources :stores do
+    member do
+      delete 'delete'
+    end
+  end
+  
   resources :products do
     member do
       delete 'delete'

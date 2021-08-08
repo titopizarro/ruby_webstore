@@ -1,0 +1,19 @@
+<div class="row justify-content-center">
+  	<div class="col-md-6 col-sm-12 align-self-center">
+		<div class="d-flex justify-content-between align-items-center py-2 mb-4 border-bottom">
+			<%= link_to 'Back', stores_path %>
+		  	<%= link_to 'Show', @store %>
+		</div>
+
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>Editing Store</h1>
+    </div>
+
+		<div style="background-color: #dedede40;">
+
+			<%= render 'form', store: @store %>
+
+		</div>
+    
+  	</div>
+</div>
