@@ -2,7 +2,7 @@
   <div class="col-md-6 col-sm-12 align-self-center">
     <div class="d-flex justify-content-between align-items-center py-2 mb-4 border-bottom">
         <%= link_to 'Back', categories_path %>
-        <%= link_to 'Edit', edit_category_path(@category) %>
+        <!-- <%= link_to 'Edit', edit_category_path(@category) %> -->
     </div>
     
     <% if !notice.to_s.empty? %>
@@ -13,7 +13,6 @@
         </button>
       </div>
     <% end %>
-
 
     <div class="d-flex justify-content-between align-items-center">
         <h1>Show Category</h1>
