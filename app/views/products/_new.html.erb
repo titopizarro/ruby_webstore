@@ -1,0 +1,37 @@
+<div class="modal-header">
+
+  <h5 class="modal-title" id="productModalLabel">
+    <% if @edit %>
+    <span class="text-primary"> Edit product</span>
+    <% elsif @erased != true %>
+    <span class="text-primary"> New product</span>
+    <% else %>
+    <span class="text-danger"> Remove product</span>
+    <% end %>
+  </h5>
+
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+</div>
+
+<div class="modal-body" id="productModalBody">
+  <% if @erased != true %>
+
+   <%= render 'form', product: @product, :remote => true %>
+
+  <% else %>
+
+    <p> Are you sure you remove the product <strong class="text-danger"><%= @product.name %></strong>? </p>
+    <p> The data is permanently deleted. This action can not be undone.</p>
+
+  <% end %>
+</div>
+
+<% if @erased %>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <%= link_to 'Delete', delete_product_path(@product), method: :delete, :class => "btn btn-danger" %>
+</div>
+<% end %>
