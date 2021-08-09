@@ -16,7 +16,7 @@
           <div id="product-<%= product.id %>">
             <%= product.name %>, <span class="text-muted"><%= product.color %> - <%= product.size %></span>
             <br>
-            <small class="text-muted p-1 bg-white">in <%= product.category.name %></small>
+            <small class="text-muted p-1 bg-white">in <a href="/categories" class="text-muted"><%= product.category.name %></a> by</small> <a href="/stores" class="text-dark"><%= product.store.name %></a>
           </div>
 
           <div id="product-<%= product.id %>-actions">

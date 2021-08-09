@@ -14,7 +14,7 @@
     <% end %>
 
     <div class="d-flex justify-content-between align-items-center">
-        <h1>Show Category</h1>
+        <h1>Show Product</h1>
     </div>
 
     <div class="mt-2 p-4" style="background-color: #dedede40;">
@@ -33,6 +33,15 @@
       </div>
       <div>
         <small>Category:</small> <strong> <%= @product.category.name %></strong>
+      </div>
+      <div>
+        <small>Keywords:</small> 
+        <% @product.category.keywords.each do |k| %>
+          <strong><%= k.name %></strong>
+        <% end %>
+      </div>
+      <div>
+        <small>Store:</small> <strong> <%= @product.store.name %></strong>
       </div>
       <div class="mt-3">
         <small>Created at <%= time_tag @product.created_at %></small>

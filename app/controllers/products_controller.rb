@@ -12,11 +12,13 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
+    @keywords = Keyword.all
     @product = Product.new
   end
 
   # GET /products/1/edit
   def edit
+    @keywords = Keyword.all
   end
 
   # POST /products or /products.json
@@ -48,14 +50,6 @@ class ProductsController < ApplicationController
   end
 
   # DELETE /products/1 or /products/1.json
-  # def destroy
-  #   @product.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-  #     format.json { head :no_content }
-  #   end
-  # end
-
   def destroy
     @erased = true
     respond_to do |format|
@@ -76,6 +70,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :color, :size, :price, :category_id)
+      params.require(:product).permit(:name, :color, :size, :price, :category_id, :store_id)
     end
 end
