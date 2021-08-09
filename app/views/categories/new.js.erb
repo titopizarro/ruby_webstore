@@ -1,2 +1,28 @@
 $("#categoryModal .modal-content").html("<%= j (render 'new') %>");
 $("#categoryModal").modal('show');
+
+$("#addKeyword").on('click', function() {
+
+	let keyword = document.getElementById("new-keyword")
+	let addKeyword = keyword.value
+	if (addKeyword == '') return
+	let inputCategoryKeywords = document.getElementById("category_keyword_id")
+	if (inputCategoryKeywords.value == '')
+		inputCategoryKeywords.value = addKeyword
+	else
+		inputCategoryKeywords.value += ' '+addKeyword
+
+	$('#keywords').append('<div id="keyword-'+keyword.value+'" class="badge badge-light tet-muted d-flex align-items-center mr-1 mb-1"> <span class="text-left">'+keyword.value+'</span> <div id="'+keyword.value+'" class="m-1 p-0 btn btn-link text-danger"><span class="remove-keyword">x</span></div> </div>');
+
+	keyword.value = ''
+
+})
+
+$('.remove-keyword').on('click', function(){
+	
+	let id = $(this).parent()[0].id
+	let keywords = document.getElementById("category_keyword_id").value
+	document.getElementById("category_keyword_id").value = keywords.replace(id+' ' , '')
+	$('#keyword-'+id).remove()
+
+})

@@ -9,10 +9,40 @@
       </div>
     </div>
 
+    <div class="form-group row mt-4">
+      <label for="new-keyword" class="col-sm-2 col-form-label"><%= form.label :keyword_id %></label>
+      <div class="col-sm-8">
+        <input type="text" id="new-keyword" name="new-keyword" class="form-control">
+      </div>
+      <div class="col-sm-2">
+        <button type="button" id="addKeyword" class="btn btn-outline-primary">Add</button>
+      </div>
+      <div class="col-sm-12 d-none">
+        <%= form.text_field :keyword_id, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row mt-4">
+      <label for="new-keyword" class="col-sm-2 col-form-label">Keywords</label>
+      <div class="col-sm-10">
+
+        <div id="keywords" class="d-flex flex-wrap justify-content-start">
+          <% @category.keywords.each do |k| %>
+            <div id="keyword-<%= k.name %>" class="badge badge-light tet-muted d-flex align-items-center mr-1 mb-1">
+              <span class="text-left"><%= k.name %></span>
+              <div id="<%= k.name %>" class="m-1 p-0 btn btn-link text-danger">
+                <!-- <span class="remove-keyword">x</span> -->
+                <%= link_to "x", k, method: :delete, class: "remove-keyword text-danger" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
     <% if category.errors.any? %>
       <div id="error_explanation" class="text-danger">
         <small><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</small>
-
         <ul>
           <% category.errors.each do |error| %>
             <li class="text-danger"><%= error.full_message %></li>
