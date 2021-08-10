@@ -11,12 +11,25 @@
       <% @products.each do |product| %>
         <li
           id="product-<%= product.id %>" 
-          class="list-group-item d-flex justify-content-between align-items-center">
+          class="list-group-item d-flex justify-content-between align-items-start">
           
           <div id="product-<%= product.id %>">
             <%= product.name %>, <span class="text-muted"><%= product.color %> - <%= product.size %></span>
             <br>
-            <small class="text-muted p-1 bg-white">in <a href="/categories" class="text-muted"><%= product.category.name %></a> by</small> <a href="/stores" class="text-dark"><%= product.store.name %></a>
+            <small class="text-muted p-1 bg-white">
+              <a href="/categories/<%= product.category.id %>" class="text-muted"><%= product.category.name %></a> 
+              </small>
+              <% if product.stores.any? %>
+                available in 
+                <% product.stores.each do |store| %>
+                  <a href="/stores/<%= store.id %>" class="text-primary"><%= store.name %></a>
+                <% end %>
+              <% else %>
+                <span class="text-danger">not available in any store</span>
+              <% end %>
+
+              
+              
           </div>
 
           <div id="product-<%= product.id %>-actions">
