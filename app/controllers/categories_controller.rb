@@ -55,7 +55,6 @@ class CategoriesController < ApplicationController
 
   # PATCH/PUT /categories/1 or /categories/1.json
   def update
-    # byebug
     params[:category][:keyword_id].split(' ').each do |name|
       unless name.empty?
         keyword = Keyword.find_by name: name.to_s.strip
